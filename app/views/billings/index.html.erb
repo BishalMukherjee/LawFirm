@@ -1,0 +1,21 @@
+<main class="container-fluid">
+  <div class="text-center">
+    <h3>Billings</h3>
+  </div>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Client Name</th>
+      <th>Number of Services</th>
+      <th>Total Amount</th>
+    </tr>
+    <% @billings.each do |b| %>
+      <tr>
+        <td><%= b.id %></td>
+        <td><%= b.client.name %></td>
+        <td><%= b.number_of_services %></td>
+        <td><%= b.amount %></td>
+      </tr>
+    <% end %>
+  </table>
+</main>

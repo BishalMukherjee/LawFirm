@@ -1,0 +1,34 @@
+<main class="container">
+  <h3 class="text-center">Edit Service Details</h3>
+  <%= form_for @service do |s| %>
+    <div class="form-group row mx-auto my-4">
+      <%= s.label :name, class:"col-sm-1" %>
+      <div class="col-sm-10">
+        <%= s.text_field :name, required: true, class:"form-control" %>
+      </div>
+    </div>
+    <div class="form-group row mx-auto my-4">
+      <%= s.label :charge, class:"col-sm-1" %>
+      <div class="col-sm-10">
+        <%= s.number_field :charge, class:"form-control" %>
+      </div>
+    </div>
+    <div class="form-group row mx-auto my-4">
+      <%= s.label :client_id, class:"col-sm-1" %>
+      <div class="col-sm-10">
+        <%= s.select :client_id, options_from_collection_for_select(@clients, "id", "email", 1), { include_blank: "Blank" } , {class:"w-50"} %>
+      </div>
+    </div>
+    <div class="form-group row mx-auto my-4">
+      <%= s.label :start_date, class:"ml-3" %>
+      <span class="ml-4"><%= s.date_field :start_date, min: Date.today, max: "2022-04-22"%></span>
+    </div>
+    <div class="form-group row mx-auto my-4">
+      <%= s.label :end_date, class:"ml-3" %>
+      <span class="ml-4"><%= s.date_field :end_date, min: Date.today, max: "2022-04-22%></span>
+    </div>
+    <div class="text-center my-4">
+      <%= s.submit "Submit", class:"btn btn-primary" %>
+    </div>
+  <% end %>
+</main>

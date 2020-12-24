@@ -1,0 +1,33 @@
+<main class="container-fluid">
+  <div class="text-center">
+    <h3>Users</h3>
+  </div>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email ID</th>
+    <tr>
+    <% @users.each do |u| %>
+      <tr>
+        <td><%= u.id %></td>
+        <td><%= u.name %></td>
+        <td><%= u.email %></td>
+        <% if current_user%>
+          <td><%= link_to "Show", user_path(u) %></td>
+          <td><%= link_to "Edit", edit_user_path(u) %></td>
+          <td>
+            <% unless u == current_user %>
+              <%= link_to "Delete", user_path(u), method: :delete, data: {confirm: "Are you sure?"} %>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+  <div class="text-center">
+    <% if current_user%>
+      <%= link_to "Add User", new_user_path, class:"btn btn-primary my-5" %>
+    <% end %>
+  </div>
+</main>

@@ -1,0 +1,30 @@
+<main class="container-fluid">
+  <div class="text-center">
+    <h3>Services</h3>
+  </div>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Service Name</th>
+      <th>Client Name</th>
+      <th>Charge</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+    <tr>
+    <% @services.each do |s| %>
+      <tr>
+        <td><%= s.id %></td>
+        <td><%= s.name %></td>
+        <td><%= s.client.name %></td>
+        <td><%= s.charge %></td>
+        <td><%= s.start_date %></td>
+        <td><%= s.end_date %></td>
+        <td><%= link_to "Edit", edit_service_path(s) %></td>
+        <td><%= link_to "Delete", service_path(s), method: :delete, data: {confirm: "Are you sure?"} %></td>
+      </tr>
+    <%end%>
+  </table>
+  <div class="text-center">
+    <%= link_to "New Service", new_service_path, class:"btn btn-primary my-5" %>
+  </div>
+</main>
